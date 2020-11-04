@@ -1,6 +1,9 @@
 const path = require("path");
-const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const AutoPrefixer = require('autoprefixer');
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const TailwindPlugin = require("tailwindcss");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (env) => {
@@ -16,12 +19,22 @@ module.exports = (env) => {
                     exclude: /(node_modules|bower_components)/,
                 },
                 {
-                    test: /\.css$/,
+                    test: /(\.css|\.scss)$/,
                     use: [
                         env && env.NODE_ENV === 'production'
                             ? MiniCSSExtractPlugin.loader
                             : 'style-loader',
                         'css-loader',
+                        'sass-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                postcssOptions: {
+                                    ident: 'postcss',
+                                    plugins: [TailwindPlugin, AutoPrefixer],
+                                },
+                            },
+                        },
                     ],
                 },
             ],
@@ -34,6 +47,7 @@ module.exports = (env) => {
             new MiniCSSExtractPlugin({
                 filename: '[name].[chunkhash].css',
             }),
+            new CssMinimizerPlugin(),
         ],
         devServer: {
             contentBase: './dist',
