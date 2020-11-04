@@ -11,6 +11,7 @@ module.exports = (env) => {
         entry: {
             app: './src/index.js',
         },
+        devtool: 'eval-cheap-module-source-map',
         module: {
             rules: [
                 {
