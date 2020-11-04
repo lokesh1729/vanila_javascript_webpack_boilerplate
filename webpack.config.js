@@ -6,17 +6,22 @@ const env = "PROD";
 
 module.exports = {
     entry: {
-        app: "./src/index.js",
+        app: './src/index.js',
     },
     module: {
         rules: [
             {
+                test: /\.js$/,
+                use: ['babel-loader'],
+                exclude: /(node_modules|bower_components)/,
+            },
+            {
                 test: /\.css$/,
                 use: [
-                    env === "DEV"
-                        ? "style-loader"
+                    env === 'DEV'
+                        ? 'style-loader'
                         : MiniCSSExtractPlugin.loader,
-                    "css-loader",
+                    'css-loader',
                 ],
             },
         ],
@@ -24,17 +29,17 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
-            template: './src/index.html'
+            template: path.resolve(__dirname, 'src', 'index.html'),
         }),
         new MiniCSSExtractPlugin({
-            filename: "[name].[chunkhash].css",
+            filename: '[name].[chunkhash].css',
         }),
     ],
     devServer: {
-        contentBase: "./dist",
+        contentBase: './dist',
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "[name].[chunkhash].bundle.js",
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[chunkhash].bundle.js',
     },
-};
+}
