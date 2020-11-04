@@ -1,4 +1,6 @@
+node_modules
 .pnp.js
 .yarn/
 .yarnrc.yml
 yarn-error.log
+dist
