@@ -51,7 +51,7 @@ module.exports = (env) => {
             new CssMinimizerPlugin(),
         ],
         devServer: {
-            contentBase: './dist',
+            contentBase: path.join(__dirname, 'public'),
         },
         output: {
             path: path.resolve(__dirname, 'dist'),
