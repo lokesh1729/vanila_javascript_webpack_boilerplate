@@ -11,6 +11,14 @@
     "build": "webpack --env NODE_ENV=production"
   },
   "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "prettier": "^2.1.2",
+    "style-loader": "^2.0.0"
+  },
+  "dependencies": {
     "@babel/core": "^7.12.3",
     "autoprefixer": "^10.0.2",
     "babel-loader": "^8.1.0",
@@ -19,22 +27,14 @@
     "css-minimizer-webpack-plugin": "^1.1.5",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.2.1",
-    "postcss": "^8.1.8",
-    "postcss-loader": "^4.0.4",
-    "prettier": "^2.1.2",
+    "postcss": "^8.1.9",
+    "postcss-import": "^13.0.0",
+    "postcss-loader": "^4.1.0",
     "sass": "^1.28.0",
     "sass-loader": "^10.0.5",
-    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.0.1",
     "webpack": "^5.3.2",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
-  },
-  "dependencies": {
-    "eslint": "^7.12.1",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^2.22.1",
-    "postcss-import": "^13.0.0",
-    "tailwindcss": "^2.0.1"
   }
 }
